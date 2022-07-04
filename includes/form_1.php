@@ -1,8 +1,13 @@
+
 <?php	
 	if(empty($_POST['name']) && strlen($_POST['name']) == 0 || empty($_POST['email']) && strlen($_POST['email']) == 0 || empty($_POST['input_504']) && strlen($_POST['input_504']) == 0 || empty($_POST['message']) && strlen($_POST['message']) == 0)
 	{
 		return false;
+		
+		
+	
 	}
+	
 	
 	$name = $_POST['name'];
 	$email = $_POST['email'];
@@ -20,5 +25,14 @@
 	$headers .= "Reply-To: $input_504";	
 	
 	mail($to,$email_subject,$email_body,$headers); // Post message
-	return true;			
+	return true;
+/*	-name login form
+	ansible.builtin.uri:
+    url: C:\Users\MARIE LOURDES\Documents\la-panthere-project\includes\form_1.php
+	method: POST
+	assert:
+	that: 
+	-form_1 = 0
+	success_msg:"'form_1'Your message has been sent." 
+	fail_msg:"'form_1'Sorry it seems that our mail server is not responding, Sorry for the inconvenience!" */
 ?>
